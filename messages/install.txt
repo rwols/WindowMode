@@ -1,0 +1,6 @@
+Thank you for installing WindowMode. In the bottom left corner of the
+status bar, you'll see the current mode your window is in from now on.
+
+* Displays `FILE MODE` if you opened a single file without a folder hierarchy.
+* Displays `FOLDER MODE` if you opened a folder.
+* Displays `PROJECT MODE` if you opened a project.
