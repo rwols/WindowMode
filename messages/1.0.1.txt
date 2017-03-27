@@ -1,0 +1,2 @@
+Fix a bug where sometimes the window property may be None. In that case,
+we just go home. This avoids an exception thrown in the console.
