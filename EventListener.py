@@ -7,6 +7,8 @@ class EventListener(sublime_plugin.EventListener):
     def on_new(self, view):
         STATUS_KEY = '000_WindowMode'
         window = view.window()
+        if not window:
+            return
         project = window.project_data()
         if project:
             filename = window.project_file_name()
