@@ -14,7 +14,7 @@ class EventListener(sublime_plugin.EventListener):
         if not window:
             return
         if window.project_data():
-            status = 'PROJECT_MODE' if window.project_file_name() else 'FOLDER_MODE'
+            status = 'PROJECT MODE' if window.project_file_name() else 'FOLDER MODE'
         else:
             status = 'FILE MODE'
         view.set_status(STATUS_KEY, status)

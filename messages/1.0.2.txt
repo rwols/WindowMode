@@ -1,0 +1,2 @@
+Use the character \x01 to make sure that the status is left-aligned in the
+status bar.
