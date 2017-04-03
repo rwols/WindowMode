@@ -5,20 +5,19 @@ class EventListener(sublime_plugin.EventListener):
     "FOLDER MODE" or "PROJECT MODE"."""
 
     def on_new(self, view):
-        STATUS_KEY = '000_WindowMode'
+        # \x01 is the "start of heading" non-printable character in ASCII.
+        # Sublime uses the status key for ordering purposes and doesn't print
+        # it anywhere, so this works fine. We use \x01 to make sure that the
+        # status is the left-most item in the status bar.
+        STATUS_KEY = '\x01WindowMode'
         window = view.window()
         if not window:
             return
-        project = window.project_data()
-        if project:
-            filename = window.project_file_name()
-            if filename:
-                view.set_status(STATUS_KEY, 'PROJECT MODE')
-            else:
-                view.set_status(STATUS_KEY, 'FOLDER MODE')
-            return
+        if window.project_data():
+            status = 'PROJECT_MODE' if window.project_file_name() else 'FOLDER_MODE'
         else:
-            view.set_status(STATUS_KEY, 'FILE MODE')
+            status = 'FILE MODE'
+        view.set_status(STATUS_KEY, status)
 
     def on_clone(self, view):
         self.on_new(view)
